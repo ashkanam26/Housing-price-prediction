@@ -17,16 +17,16 @@ the dataset used is the **california housing dataset** from `scikit-learn`.
 
 ## visualizations
 
-### 1.actual vs predicted values
+1. actual vs predicted values
     ![Actual vs predicted]
 (actual_vs_predict.png)
 
-### 2. feature importance
-    ![feature importance]
+2. feature importance
+   ![feature importance]
 (feature_importance.png)
 
-### 3. housing price distribution
-    ![housing price distribution]
+3. housing price distribution
+   ![housing price distribution]
 (housing_price.png)
 
 ## how to run the project
