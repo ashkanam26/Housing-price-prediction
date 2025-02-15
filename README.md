@@ -19,15 +19,15 @@ the dataset used is the **california housing dataset** from `scikit-learn`.
 
 1. actual vs predicted values
     ![Actual vs predicted]
-(actual_vs_predict.png)
+(https://github.com/ashkanam26/Housing-price-prediction/blob/main/actual_vs_predict.png)
 
 2. feature importance
    ![feature importance]
-(feature_importance.png)
+(https://github.com/ashkanam26/Housing-price-prediction/blob/main/feature_importance.png)
 
 3. housing price distribution
    ![housing price distribution]
-(housing_price.png)
+(https://github.com/ashkanam26/Housing-price-prediction/blob/main/housing_price.png)
 
 ## how to run the project
 
