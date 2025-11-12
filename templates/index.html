@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Trading Bot Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🤖 Crypto Trading Bot Store</h1>
+            <p class="tagline">Premium Cryptocurrency Trading Bot Accounts</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Welcome to Our Trading Bot Marketplace</h2>
+            <p>Discover professional-grade cryptocurrency trading bots designed to maximize your trading efficiency and profitability.</p>
+        </section>
+
+        <section class="bot-grid">
+            {% for bot in bots %}
+            <div class="bot-card">
+                <div class="bot-icon">🔧</div>
+                <h3>{{ bot.name }}</h3>
+                <p class="description">{{ bot.description }}</p>
+                <div class="performance">
+                    <span class="badge">{{ bot.performance }}</span>
+                </div>
+                <ul class="features">
+                    {% for feature in bot.features %}
+                    <li>✓ {{ feature }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="price-section">
+                    <span class="price">${{ bot.price }}</span>
+                    <a href="/bot/{{ bot.id }}" class="btn">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Crypto Trading Bot Store. All rights reserved.</p>
+            <p><small>Disclaimer: Trading cryptocurrencies carries risk. Past performance does not guarantee future results.</small></p>
+        </div>
+    </footer>
+</body>
+</html>

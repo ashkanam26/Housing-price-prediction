@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ bot.name }} - Crypto Trading Bot Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🤖 Crypto Trading Bot Store</h1>
+            <p class="tagline"><a href="/" style="color: white; text-decoration: none;">← Back to Store</a></p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="bot-details">
+            <div class="bot-header">
+                <div class="bot-icon-large">🔧</div>
+                <div>
+                    <h2>{{ bot.name }}</h2>
+                    <span class="badge-large">{{ bot.performance }}</span>
+                </div>
+            </div>
+
+            <div class="details-grid">
+                <div class="details-section">
+                    <h3>Description</h3>
+                    <p>{{ bot.description }}</p>
+                </div>
+
+                <div class="details-section">
+                    <h3>Features</h3>
+                    <ul class="features-list">
+                        {% for feature in bot.features %}
+                        <li>✓ {{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="details-section">
+                    <h3>Performance</h3>
+                    <p class="performance-text">{{ bot.performance }}</p>
+                    <p class="note">Based on backtesting and live trading data</p>
+                </div>
+
+                <div class="details-section pricing-section">
+                    <h3>Pricing</h3>
+                    <div class="price-large">${{ bot.price }} {{ bot.currency }}</div>
+                    <button class="btn-primary">Purchase Account</button>
+                    <p class="note">One-time payment, lifetime access</p>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <h3>What You Get</h3>
+                <ul>
+                    <li>✓ Full access to trading bot account</li>
+                    <li>✓ Detailed setup instructions</li>
+                    <li>✓ Email support for 30 days</li>
+                    <li>✓ Free updates for 1 year</li>
+                    <li>✓ Community access</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Crypto Trading Bot Store. All rights reserved.</p>
+            <p><small>Disclaimer: Trading cryptocurrencies carries risk. Past performance does not guarantee future results.</small></p>
+        </div>
+    </footer>
+</body>
+</html>
