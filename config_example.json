@@ -1,0 +1,53 @@
+{
+    "trading": {
+        "symbols": ["BTC/USDT", "ETH/USDT"],
+        "timeframe": "1h",
+        "initial_capital": 10000,
+        "max_position_size": 0.1,
+        "stop_loss_pct": 0.02,
+        "take_profit_pct": 0.05
+    },
+    "technical_analysis": {
+        "indicators": ["RSI", "MACD", "BB", "SMA", "EMA"],
+        "ml_model": "random_forest",
+        "lookback_period": 100
+    },
+    "fundamental_analysis": {
+        "enabled": true,
+        "factors": ["market_cap", "volume", "liquidity"]
+    },
+    "sentiment_analysis": {
+        "enabled": true,
+        "sources": ["twitter", "reddit", "news"],
+        "nlp_model": "transformer",
+        "sentiment_threshold": 0.6
+    },
+    "news_analysis": {
+        "enabled": true,
+        "sources": ["cryptonews", "coindesk", "cointelegraph"],
+        "update_interval": 300
+    },
+    "risk_management": {
+        "max_daily_loss": 0.05,
+        "max_open_positions": 3,
+        "risk_per_trade": 0.02,
+        "use_ai_risk_assessment": true
+    },
+    "profit_management": {
+        "trailing_stop": true,
+        "trailing_stop_pct": 0.03,
+        "partial_profit_taking": true,
+        "profit_levels": [0.03, 0.05, 0.08]
+    },
+    "data_collection": {
+        "exchange": "binance",
+        "update_frequency": 60,
+        "historical_data_days": 365
+    },
+    "ai_models": {
+        "ml_models": ["random_forest", "xgboost", "lstm"],
+        "dl_models": ["transformer", "gru"],
+        "nlp_models": ["bert", "roberta"],
+        "ensemble": true
+    }
+}
