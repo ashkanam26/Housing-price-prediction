@@ -4,7 +4,7 @@ This document provides practical examples of using the Cryptocurrency Payment Ga
 
 ## Base URL
 
-Development: `http://localhost:5001`
+Development: `http://localhost:5000`
 Production: Replace with your production URL
 
 ## Complete Payment Flow Example
@@ -12,7 +12,7 @@ Production: Replace with your production URL
 ### Step 1: Get Available Plans
 
 ```bash
-curl -X GET http://localhost:5001/api/plans
+curl -X GET http://localhost:5000/api/plans
 ```
 
 Response:
@@ -50,7 +50,7 @@ Response:
 ### Step 2: Create Payment Request
 
 ```bash
-curl -X POST http://localhost:5001/api/payment/create \
+curl -X POST http://localhost:5000/api/payment/create \
   -H "Content-Type: application/json" \
   -d '{
     "email": "your@email.com",
@@ -88,7 +88,7 @@ After sending, copy your transaction hash from your wallet or block explorer.
 ### Step 4: Verify Payment
 
 ```bash
-curl -X POST http://localhost:5001/api/payment/verify \
+curl -X POST http://localhost:5000/api/payment/verify \
   -H "Content-Type: application/json" \
   -d '{
     "payment_id": "3a7db81cdba80c9bd337493bafafe36b",
@@ -111,7 +111,7 @@ Response:
 ### Step 5: Use the Prediction API
 
 ```bash
-curl -X POST http://localhost:5001/api/predict \
+curl -X POST http://localhost:5000/api/predict \
   -H "X-API-Key: YOUR_API_KEY_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -156,7 +156,7 @@ The predicted price is in units of $100,000, so 4.526 = $452,600
 import requests
 import json
 
-BASE_URL = "http://localhost:5001"
+BASE_URL = "http://localhost:5000"
 
 # Step 1: Create payment
 payment_data = {
@@ -195,7 +195,7 @@ print(f"Predicted Price: ${prediction['predicted_price'] * 100000:.2f}")
 ## JavaScript Example
 
 ```javascript
-const BASE_URL = 'http://localhost:5001';
+const BASE_URL = 'http://localhost:5000';
 
 // Step 1: Create payment
 async function createPayment() {
@@ -268,13 +268,13 @@ async function makePrediction(apiKey) {
 ### Check Payment Status
 
 ```bash
-curl -X GET http://localhost:5001/api/payment/status/{payment_id}
+curl -X GET http://localhost:5000/api/payment/status/{payment_id}
 ```
 
 ### Get User Subscription
 
 ```bash
-curl -X GET http://localhost:5001/api/subscription/{email}
+curl -X GET http://localhost:5000/api/subscription/{email}
 ```
 
 ## Error Handling

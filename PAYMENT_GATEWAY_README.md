@@ -46,7 +46,7 @@ cd Housing-price-prediction
 
 2. **Install dependencies**
 ```bash
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 
 3. **Configure wallet addresses**
@@ -234,7 +234,7 @@ Housing-price-prediction/
 │   └── js/
 │       └── main.js                # Frontend logic
 ├── xgboost-model.pkl              # Trained model
-├── requirments.txt                # Python dependencies
+├── requirements.txt                # Python dependencies
 ├── .env.example                   # Environment variables template
 └── README.md                      # This file
 ```

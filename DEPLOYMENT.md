@@ -4,7 +4,7 @@
 
 1. **Install dependencies**
 ```bash
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 
 2. **Configure wallet addresses**
@@ -66,8 +66,8 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY requirments.txt .
-RUN pip install --no-cache-dir -r requirments.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
@@ -134,7 +134,7 @@ cd Housing-price-prediction
 
 5. **Setup application**
 ```bash
-pip3 install -r requirments.txt
+pip3 install -r requirements.txt
 cp .env.example .env
 # Edit .env with your wallet addresses
 ```

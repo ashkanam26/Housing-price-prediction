@@ -18,7 +18,7 @@ This project now includes a complete cryptocurrency payment system! Users can su
 
 1. **Install dependencies**
 ```bash
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 
 2. **Configure wallet addresses**
@@ -34,7 +34,7 @@ python app.py
 
 4. **Access the application**
 ```
-http://localhost:5001
+http://localhost:5000
 ```
 
 ### Documentation
