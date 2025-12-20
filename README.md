@@ -1,7 +1,50 @@
 # california housing price prediction
 
 ## project overview
-this project focuses on predicting house prices in california using machine learning model.
+this project focuses on predicting house prices in california using machine learning model and includes a cryptocurrency payment gateway for monetization.
+
+## 🆕 NEW: Cryptocurrency Payment Gateway
+
+This project now includes a complete cryptocurrency payment system! Users can subscribe to Pro or ProPlus plans using Bitcoin, Ethereum, or USDT to access the housing price prediction API.
+
+### Features
+- **Multiple Cryptocurrencies**: BTC, ETH, USDT support
+- **Direct Payments**: Payments go directly to your wallet
+- **Two Subscription Tiers**: Pro ($50) and ProPlus ($100)
+- **Secure API Access**: API key-based authentication
+- **Web Interface**: Beautiful Persian/English UI for easy payments
+
+### Quick Start
+
+1. **Install dependencies**
+```bash
+pip install -r requirments.txt
+```
+
+2. **Configure wallet addresses**
+```bash
+cp .env.example .env
+# Edit .env with your actual wallet addresses
+```
+
+3. **Run the application**
+```bash
+python app.py
+```
+
+4. **Access the application**
+```
+http://localhost:5001
+```
+
+### Documentation
+- [Payment Gateway README](PAYMENT_GATEWAY_README.md) - Complete documentation
+- [API Examples](API_EXAMPLES.md) - Code examples and usage
+- [Deployment Guide](DEPLOYMENT.md) - Production deployment instructions
+
+---
+
+## Original Project: Housing Price Prediction
 
 ## goal
 to build a predictive model for estimating house prices based on features such as median income, average rooms, population, and more.
