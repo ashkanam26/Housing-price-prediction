@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیش‌بینی قیمت مسکن با هوش مصنوعی - پرداخت ارز دیجیتال</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏠 پیش‌بینی قیمت مسکن کالیفرنیا</h1>
+            <p class="subtitle">با استفاده از مدل‌های هوش مصنوعی پیشرفته</p>
+        </header>
+
+        <section class="intro">
+            <h2>درباره سرویس</h2>
+            <p>
+                این سرویس با استفاده از مدل XGBoost و داده‌های واقعی، قیمت مسکن را با دقت بالا پیش‌بینی می‌کند.
+                برای دسترسی به API و امکانات پیشرفته، یکی از پلان‌های زیر را انتخاب کنید.
+            </p>
+        </section>
+
+        <section class="pricing">
+            <h2>پلان‌های اشتراک</h2>
+            <div class="plans-container">
+                {% for plan_id, plan in plans.items() %}
+                <div class="plan-card" data-plan="{{ plan_id }}">
+                    <h3>{{ plan.name }}</h3>
+                    <div class="price">
+                        <span class="amount">{{ plan.price_usdt }}</span>
+                        <span class="currency">USDT</span>
+                    </div>
+                    <div class="price-alt">
+                        {{ plan.price_btc }} BTC یا {{ plan.price_eth }} ETH
+                    </div>
+                    <ul class="features">
+                        {% for feature in plan.features %}
+                        <li>✓ {{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                    <button class="select-plan-btn" onclick="selectPlan('{{ plan_id }}')">
+                        انتخاب پلان
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="payment-section" id="paymentSection" style="display: none;">
+            <h2>پرداخت با ارز دیجیتال</h2>
+            <div class="payment-form">
+                <div class="form-group">
+                    <label for="email">ایمیل شما:</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="currency">ارز دیجیتال:</label>
+                    <select id="currency">
+                        <option value="usdt">USDT (Tether)</option>
+                        <option value="btc">BTC (Bitcoin)</option>
+                        <option value="eth">ETH (Ethereum)</option>
+                    </select>
+                </div>
+
+                <div class="selected-plan-info" id="selectedPlanInfo"></div>
+
+                <button class="create-payment-btn" onclick="createPayment()">
+                    ایجاد درخواست پرداخت
+                </button>
+            </div>
+
+            <div class="payment-details" id="paymentDetails" style="display: none;">
+                <h3>جزئیات پرداخت</h3>
+                <div class="payment-info">
+                    <p><strong>مبلغ قابل پرداخت:</strong> <span id="paymentAmount"></span></p>
+                    <p><strong>آدرس کیف پول:</strong></p>
+                    <div class="wallet-address">
+                        <code id="walletAddress"></code>
+                        <button onclick="copyWalletAddress()" class="copy-btn">کپی</button>
+                    </div>
+                    <p class="warning">⚠️ لطفاً دقیقاً مبلغ مشخص شده را به آدرس بالا ارسال کنید.</p>
+                    <p><strong>شناسه پرداخت:</strong> <code id="paymentId"></code></p>
+                    <p class="expiry">زمان باقی‌مانده: <span id="expiryTimer"></span></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="txHash">هش تراکنش (Transaction Hash):</label>
+                    <input type="text" id="txHash" placeholder="0x..." required>
+                    <small>پس از انجام تراکنش، هش آن را وارد کنید</small>
+                </div>
+
+                <button class="verify-payment-btn" onclick="verifyPayment()">
+                    تایید پرداخت
+                </button>
+            </div>
+
+            <div class="subscription-result" id="subscriptionResult" style="display: none;">
+                <h3>✅ اشتراک فعال شد!</h3>
+                <div class="api-key-section">
+                    <p><strong>API Key شما:</strong></p>
+                    <div class="api-key">
+                        <code id="apiKey"></code>
+                        <button onclick="copyApiKey()" class="copy-btn">کپی</button>
+                    </div>
+                    <p class="info">این کلید را در درخواست‌های API خود استفاده کنید.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-docs">
+            <h2>مستندات API</h2>
+            <div class="api-endpoint">
+                <h3>پیش‌بینی قیمت مسکن</h3>
+                <code class="endpoint">POST /api/predict</code>
+                <pre class="code-block">
+Headers:
+X-API-Key: YOUR_API_KEY
+
+Body (JSON):
+{
+    "features": [
+        8.3252,  // MedInc
+        41.0,    // HouseAge
+        6.98,    // AveRooms
+        1.02,    // AveBedrms
+        322.0,   // Population
+        2.55,    // AveOccup
+        37.88,   // Latitude
+        -122.23  // Longitude
+    ]
+}
+
+Response:
+{
+    "success": true,
+    "predicted_price": 4.526,
+    "subscription_plan": "pro"
+}
+                </pre>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2024 Housing Price Prediction AI Service</p>
+            <p>پرداخت مستقیم با ارز دیجیتال - بدون واسطه</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
