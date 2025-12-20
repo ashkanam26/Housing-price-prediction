@@ -23,6 +23,8 @@ except Exception as e:
     print(f"Warning: Could not load model - {e}")
 
 # In-memory storage for payments (in production, use a database)
+# WARNING: This will lose all data on server restart
+# TODO: Implement PostgreSQL/MySQL with SQLAlchemy for production
 payments_db = {}
 subscriptions_db = {}
 
@@ -60,13 +62,34 @@ def generate_payment_id():
 def verify_transaction(transaction_hash, amount, currency):
     """
     Verify cryptocurrency transaction
-    In production, integrate with blockchain APIs like:
-    - Blockchain.info API for Bitcoin
-    - Etherscan API for Ethereum
-    - Or use payment processor APIs like CoinGate, CoinPayments
+    
+    SECURITY WARNING: This is a placeholder that always returns True!
+    In production, you MUST integrate with blockchain APIs:
+    
+    For Bitcoin:
+    - Blockchain.info API: https://www.blockchain.com/api
+    - BlockCypher API: https://www.blockcypher.com/dev/bitcoin/
+    
+    For Ethereum/USDT:
+    - Etherscan API: https://etherscan.io/apis
+    - Infura: https://infura.io/
+    
+    Or use payment processors:
+    - CoinGate: https://coingate.com/
+    - CoinPayments: https://www.coinpayments.net/
+    - NOWPayments: https://nowpayments.io/
+    
+    Example implementation with Etherscan:
+    
+    import requests
+    ETHERSCAN_API_KEY = os.getenv('ETHERSCAN_API_KEY')
+    url = f'https://api.etherscan.io/api?module=transaction&action=gettxreceiptstatus&txhash={transaction_hash}&apikey={ETHERSCAN_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return data['result']['status'] == '1'
     """
     # Placeholder for transaction verification
-    # In real implementation, query blockchain or payment gateway API
+    # TODO: Implement actual blockchain verification before production deployment
     return True
 
 
@@ -335,4 +358,9 @@ def get_subscription(email):
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    debug_mode = os.getenv('FLASK_ENV', 'production') == 'development'
+    
+    if debug_mode:
+        print("WARNING: Running in DEBUG mode. Disable debug in production!")
+    
+    app.run(debug=debug_mode, host='0.0.0.0', port=port)
