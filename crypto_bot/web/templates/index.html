@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Trading Bot Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Crypto Trading Bot Dashboard</h1>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span id="statusText">Not Initialized</span>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Control Panel -->
+            <div class="card">
+                <h2>Control Panel</h2>
+                <div class="control-section">
+                    <div class="form-group">
+                        <label>Trading Pair:</label>
+                        <input type="text" id="symbol" value="BTC/USDT">
+                    </div>
+                    <div class="form-group">
+                        <label>Initial Capital ($):</label>
+                        <input type="number" id="capital" value="10000">
+                    </div>
+                    <div class="form-group">
+                        <label>Timeframe:</label>
+                        <select id="timeframe">
+                            <option value="1m">1 Minute</option>
+                            <option value="5m">5 Minutes</option>
+                            <option value="15m">15 Minutes</option>
+                            <option value="1h" selected>1 Hour</option>
+                            <option value="4h">4 Hours</option>
+                            <option value="1d">1 Day</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button onclick="initializeBot()" class="btn btn-primary">Initialize</button>
+                        <button onclick="trainModels()" class="btn btn-secondary" id="trainBtn" disabled>Train Models</button>
+                    </div>
+                    <div class="button-group">
+                        <button onclick="startBot()" class="btn btn-success" id="startBtn" disabled>Start Trading</button>
+                        <button onclick="stopBot()" class="btn btn-danger" id="stopBtn" disabled>Stop</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Analysis -->
+            <div class="card">
+                <h2>Market Analysis</h2>
+                <div id="marketAnalysis" class="analysis-section">
+                    <p class="no-data">No analysis available. Initialize and train the bot first.</p>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="card">
+                <h2>Performance Metrics</h2>
+                <div id="performanceMetrics" class="metrics-section">
+                    <div class="metric">
+                        <span class="metric-label">Current Capital:</span>
+                        <span class="metric-value" id="currentCapital">$0.00</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Total Return:</span>
+                        <span class="metric-value" id="totalReturn">$0.00 (0.00%)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Total Trades:</span>
+                        <span class="metric-value" id="totalTrades">0</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Win Rate:</span>
+                        <span class="metric-value" id="winRate">0.00%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Position -->
+            <div class="card">
+                <h2>Current Position</h2>
+                <div id="currentPosition" class="position-section">
+                    <p class="no-data">No open position</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Chart -->
+        <div class="card chart-card">
+            <h2>Price Chart</h2>
+            <canvas id="priceChart"></canvas>
+        </div>
+
+        <!-- Recent Trades -->
+        <div class="card">
+            <h2>Recent Trades</h2>
+            <div id="recentTrades" class="trades-section">
+                <p class="no-data">No trades yet</p>
+            </div>
+        </div>
+
+        <!-- Log Console -->
+        <div class="card">
+            <h2>Activity Log</h2>
+            <div id="logConsole" class="log-console"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
