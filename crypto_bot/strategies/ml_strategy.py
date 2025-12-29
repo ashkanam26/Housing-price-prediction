@@ -322,7 +322,11 @@ class TradingStrategy:
                 'losing_trades': 0,
                 'win_rate': 0,
                 'total_return': 0,
-                'total_return_pct': 0
+                'total_return_pct': 0,
+                'avg_win': 0,
+                'avg_loss': 0,
+                'current_capital': self.current_capital,
+                'max_equity': self.initial_capital
             }
         
         closed_trades = [t for t in self.trades_history if t['action'] == 'CLOSE']
