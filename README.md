@@ -1,7 +1,35 @@
-# california housing price prediction
+# Multi-Purpose Machine Learning Repository
 
-## project overview
-this project focuses on predicting house prices in california using machine learning model.
+## 🏠 California Housing Price Prediction
+
+This project focuses on predicting house prices in california using machine learning model.
+
+## 🤖 NEW: Cryptocurrency Trading Bot with ML/DL/NLP
+
+**A comprehensive cryptocurrency trading bot has been added!** The bot uses Machine Learning, Deep Learning, and Natural Language Processing to make intelligent trading decisions.
+
+### Quick Start - Crypto Bot
+
+```bash
+# Install dependencies
+pip install -r requirements-crypto-bot.txt
+
+# Run the demo notebook
+jupyter notebook crypto_bot_demo.ipynb
+
+# Or run the web interface
+cd crypto_bot/web
+python app.py
+# Open http://localhost:5000
+```
+
+See [CRYPTO_BOT_README.md](CRYPTO_BOT_README.md) for complete documentation.
+
+---
+
+## Housing Price Prediction Project
+
+### project overview
 
 ## goal
 to build a predictive model for estimating house prices based on features such as median income, average rooms, population, and more.
